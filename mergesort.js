@@ -1,8 +1,8 @@
 function split(arr){
-let midPoint = Math.floor(arr.length / 2);
-let arr1 = arr.slice(0, midPoint);
-let arr2 = arr.slice(midPoint);
-return [arr1, arr2];
+  let midPoint = Math.floor(arr.length / 2);
+  let arr1 = arr.slice(0, midPoint);
+  let arr2 = arr.slice(midPoint);
+  return [arr1, arr2];
 }
 
 function merge(arr1, arr2){
@@ -33,8 +33,15 @@ function merge(arr1, arr2){
   return resultArr;
 }
 
-function mergeSort(){
+function mergeSort(arr){
+  if (arr.length === 1) return arr;
 
+  let splitArrays = split(arr);
+  let leftArr = splitArrays[0];
+  let rightArr = splitArrays[1];
+
+  let result = merge(mergeSort(leftArr), mergeSort(rightArr));
+  return result;
 }
 
 let testArr = [9, 5, 6, 4, 7, 2, 3];
